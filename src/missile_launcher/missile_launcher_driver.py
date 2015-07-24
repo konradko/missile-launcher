@@ -1,4 +1,6 @@
 import platform
+import time
+
 import usb.core
 import usb.util
 
@@ -28,7 +30,12 @@ class MissileLauncherDriver(object):
             except Exception:
                 pass
 
-    def send_cmd(self, cmd):
+    def execute_cmd(self, cmd):
         self.device.ctrl_transfer(
             0x21, 0x09, 0, 0, [0x02, cmd, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]
         )
+
+    def send_cmd(self, cmd, duration_ms):
+        self.execute_cmd(cmd)
+        time.sleep(duration_ms / 1000.0)
+        self.execute_cmd(self.commands['stop'])

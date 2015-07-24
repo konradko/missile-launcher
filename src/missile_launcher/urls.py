@@ -6,7 +6,7 @@ import views
 
 
 router = routers.DefaultRouter()
-router.register(r'', views.Instructions)
+router.register(r'missile-launcher', views.Instruction)
 
 urlpatterns = [
     url(r'^', include(router.urls)),
