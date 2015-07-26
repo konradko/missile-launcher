@@ -1,5 +1,5 @@
 """
-WSGI config for tumbbit project.
+WSGI config for missile-launcher project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
